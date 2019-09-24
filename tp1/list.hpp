@@ -1,10 +1,11 @@
+#include <iostream>
 #ifndef LIST_H
 #define LIST_H
 
 struct Flask{
   int volume;
   Flask *next;
-}
+};
 
 class FlaskList{
   private:
@@ -18,5 +19,5 @@ class FlaskList{
     void removeFlask(int volume);
     bool haveFlask(int volume);
     void printList();
-}
+};
 #endif
