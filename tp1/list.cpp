@@ -27,40 +27,41 @@ void FlaskList::insertFlask(int volume){
 
 void FlaskList::removeFlask(int volume){
   Flask *aux = this->head;
-  // primeiro termo
-  if(aux->volume == volume){
-    delete this->head;
+  // primeiro termo e unico da lista
+  if(this->numberOfFlasks == 1){
+    delete aux;
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->numberOfFlasks--;
+    std::cout << "Volume deletado." << std::endl;
+  } // primeiro termo mas n o unico
+  else if(aux->volume == volume){
     this->head = aux->next;
     delete aux;
     this->numberOfFlasks--;
   }else{
-    Flask *auxNext = aux->next;
     // termo do meio
-    while(auxNext != nullptr){
-      if(auxNext->volume == volume){
+    while(aux->next->next != nullptr){
+      if(aux->next->volume == volume){
+        Flask *auxNext = aux->next;
         aux->next = auxNext->next;
         std::cout << "Volume deletado." << std::endl;
         delete auxNext;
-        delete aux;
         this->numberOfFlasks--;
         return;
       }
       aux = aux->next;
-      auxNext = auxNext->next;
     }
     // ultimo termo
-    if(auxNext->volume == volume){
-      this->tail = aux;
-      std::cout << "Volume deletado." << std::endl;
+    if(aux->next->volume == volume){
+      Flask *auxNext = aux->next;
       delete auxNext;
-      delete aux;
+      this->tail = aux;
+      aux->next = nullptr;
+      std::cout << "Volume deletado." << std::endl;
       this->numberOfFlasks--;
-      return;
     }
-    delete auxNext;
   }
-  delete aux;
-  std::cout << "Este volume não existe." << std::endl;
 }
 
 bool FlaskList::haveFlask(int volume){
