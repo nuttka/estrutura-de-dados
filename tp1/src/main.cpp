@@ -8,12 +8,14 @@ void inputTreatment(FlaskList &myFlasks, FlaskList &requestedVolumes){
   while(std::cin >> volume >> function){
     if(function == 'i'){
       myFlasks.insertFlask(volume);
-      std::cout << "insere " << volume << std::endl;
+      // std::cout << "insere " << volume << std::endl;
     }else if(function == 'r'){
       myFlasks.removeFlask(volume);
-      std::cout << "remove " << volume << std::endl;
+      // std::cout << "remove " << volume << std::endl;
     }else if(function == 'p'){
+      myFlasks.haveFlask(volume);
       myFlasks.printList();
+      // myFlasks.flaskMeasurement(volume);
     }
 
     std::cin.ignore();

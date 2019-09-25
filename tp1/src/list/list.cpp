@@ -67,17 +67,15 @@ void FlaskList::removeFlask(int volume){
 bool FlaskList::haveFlask(int volume){
   Flask *aux = this->head;
   int i;
+  bool exist = false;
   for(i=0; i<this->numberOfFlasks; i++){
     if(aux->volume == volume){
-      std::cout << "O volume de " << volume << " ml existe." << std::endl;
-      delete aux;
-      return true;
+      exist = true;
     }
     aux = aux->next;
   }
   delete aux;
-  std::cout << "O volume de " << volume << " ml nao existe." << std::endl;
-  return false;
+  return exist;
 }
 
 void FlaskList::printList(){
@@ -92,4 +90,12 @@ void FlaskList::printList(){
     aux = aux->next;
   }
   delete aux;
+}
+
+void flaskMeasurement(int volume){
+  // int necessaryOperations = 1;
+  // int necessaryRemoves = 0;
+  // while(!this->haveFlask(volume)){
+  //   Flask *aux = this->head;
+  // }
 }
