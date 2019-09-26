@@ -10,9 +10,10 @@ FlaskList::~FlaskList(){
 
 }
 
-void FlaskList::insertFlask(int volume){
+void FlaskList::insertFlask(int volume, int operations){
   Flask *newFlask = new Flask;
   newFlask->volume = volume;
+  newFlask->operations = operations;
 
   if(this->numberOfFlasks == 0){
     this->head = newFlask;
@@ -93,9 +94,17 @@ void FlaskList::printList(){
 }
 
 void flaskMeasurement(int volume){
-  // int necessaryOperations = 1;
-  // int necessaryRemoves = 0;
-  // while(!this->haveFlask(volume)){
-  //   Flask *aux = this->head;
-  // }
+  FlaskList auxFlasks;
+  auxFlasks.insertFlask(0, 0);
+  int i;
+  Flask *aux;
+  aux = this->head;
+  for(i=0; i<this->numberOfFlasks; i++){
+    auxFlasks.insertFlask(aux->volume, aux->operations);
+    aux = aux->next;
+  }
+  aux = auxFlasks.head->next;
+  while(auxFlasks.haveFlask(volume)){
+    
+  }
 }

@@ -4,6 +4,7 @@
 
 struct Flask{
   int volume;
+  int operations;
   Flask *next;
 };
 
@@ -12,6 +13,7 @@ class FlaskList{
     Flask *head;
     Flask *tail;
     int numberOfFlasks;
+    
   public:
     FlaskList();
     ~FlaskList();
@@ -19,6 +21,6 @@ class FlaskList{
     void removeFlask(int volume);
     bool haveFlask(int volume);
     void printList();
-    void flaskMeasurement(int volume);
+    void flaskMeasurement(int volume, int operations);
 };
 #endif

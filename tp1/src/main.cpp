@@ -7,7 +7,7 @@ void inputTreatment(FlaskList &myFlasks, FlaskList &requestedVolumes){
 
   while(std::cin >> volume >> function){
     if(function == 'i'){
-      myFlasks.insertFlask(volume);
+      myFlasks.insertFlask(volume, 1);
       // std::cout << "insere " << volume << std::endl;
     }else if(function == 'r'){
       myFlasks.removeFlask(volume);
