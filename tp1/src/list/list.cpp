@@ -87,24 +87,61 @@ void FlaskList::printList(){
   Flask *aux = this->head;
   int i;
   for(i=0; i<this->numberOfFlasks; i++){
-    std::cout << aux->volume << " ml" << std::endl;  
+    std::cout << "operations: " << aux->operations << " " << aux->volume << " ml" << std::endl;  
     aux = aux->next;
   }
   delete aux;
 }
 
-void flaskMeasurement(int volume){
+Flask* FlaskList::getHead(){
+  return this->head;
+}
+
+int FlaskList::getNumberOfFlasks(){
+  return this->numberOfFlasks;
+}
+
+void FlaskList::flaskMeasurement(int volume){
+  if(volume == 0){
+    std::cout << volume << std::endl;
+    return;
+  }
   FlaskList auxFlasks;
-  auxFlasks.insertFlask(0, 0);
-  int i;
+  int i, j;
   Flask *aux;
+  Flask *aux2;
   aux = this->head;
   for(i=0; i<this->numberOfFlasks; i++){
+    if(aux->volume == volume){
+      std::cout << aux->operations << std::endl;
+      return;
+    }
     auxFlasks.insertFlask(aux->volume, aux->operations);
     aux = aux->next;
   }
-  aux = auxFlasks.head->next;
-  while(auxFlasks.haveFlask(volume)){
-    
+  while(true){
+    aux2 = this->head;
+    int amount = auxFlasks.getNumberOfFlasks();
+    for(i=0; i<this->numberOfFlasks; i++){
+      aux = auxFlasks.getHead();
+      for(j=0; j<amount; j++){
+        if(aux->volume + aux2->volume == volume){
+          std::cout << aux->operations + aux2->operations << std::endl;
+          auxFlasks.printList();
+          return;
+        }else if(!auxFlasks.haveFlask(aux->volume + aux2->volume)){
+          auxFlasks.insertFlask(aux->volume + aux2->volume, aux->operations + aux2->operations);
+        }
+        if(aux->volume - aux2->volume == volume){
+          std::cout << aux->operations+aux2->operations << std::endl;
+          auxFlasks.printList();
+          return;
+        }else if(aux->volume > aux2->volume && !auxFlasks.haveFlask(aux->volume - aux2->volume)){
+          auxFlasks.insertFlask(aux->volume - aux2->volume, aux->operations + aux2->operations);
+        }
+        aux = aux->next;
+      }
+      aux2 = aux2->next;
+    }
   }
 }

@@ -1,7 +1,7 @@
 #include "list.hpp"
 #include <string>
 
-void inputTreatment(FlaskList &myFlasks, FlaskList &requestedVolumes){
+void inputTreatment(FlaskList &myFlasks){
   int volume;
   char function;
 
@@ -13,9 +13,9 @@ void inputTreatment(FlaskList &myFlasks, FlaskList &requestedVolumes){
       myFlasks.removeFlask(volume);
       // std::cout << "remove " << volume << std::endl;
     }else if(function == 'p'){
-      myFlasks.haveFlask(volume);
-      myFlasks.printList();
-      // myFlasks.flaskMeasurement(volume);
+      // myFlasks.haveFlask(volume);
+      // myFlasks.printList();
+      myFlasks.flaskMeasurement(volume);
     }
 
     std::cin.ignore();
@@ -25,6 +25,5 @@ void inputTreatment(FlaskList &myFlasks, FlaskList &requestedVolumes){
 
 int main(){
   FlaskList myFlasks;
-  FlaskList requestedVolumes;
-  inputTreatment(myFlasks, requestedVolumes);
+  inputTreatment(myFlasks);
 }

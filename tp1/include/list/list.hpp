@@ -17,10 +17,12 @@ class FlaskList{
   public:
     FlaskList();
     ~FlaskList();
-    void insertFlask(int volume);
+    void insertFlask(int volume, int operations);
     void removeFlask(int volume);
     bool haveFlask(int volume);
     void printList();
-    void flaskMeasurement(int volume, int operations);
+    void flaskMeasurement(int volume);
+    Flask* getHead();
+    int getNumberOfFlasks();
 };
 #endif
