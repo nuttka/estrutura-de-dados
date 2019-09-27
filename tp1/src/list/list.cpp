@@ -7,7 +7,18 @@ FlaskList::FlaskList(){
 }
 
 FlaskList::~FlaskList(){
+  // Flask* currentFlask = this->head;
+  // while (currentFlask){
+  //   Flask* nextFlask = currentFlask->next;
+  //   delete currentFlask;
+  //   currentFlask = nextFlask;
+  // }
+}
 
+void FlaskList::clearList(){
+  delete this->head;
+  delete this->tail;
+  this->numberOfFlasks = 0;
 }
 
 void FlaskList::insertFlask(int volume, int operations){
@@ -34,7 +45,6 @@ void FlaskList::removeFlask(int volume){
     this->head = nullptr;
     this->tail = nullptr;
     this->numberOfFlasks--;
-    std::cout << "Volume deletado." << std::endl;
   } // primeiro termo mas n o unico
   else if(aux->volume == volume){
     this->head = aux->next;
@@ -46,7 +56,6 @@ void FlaskList::removeFlask(int volume){
       if(aux->next->volume == volume){
         Flask *auxNext = aux->next;
         aux->next = auxNext->next;
-        std::cout << "Volume deletado." << std::endl;
         delete auxNext;
         this->numberOfFlasks--;
         return;
@@ -59,7 +68,6 @@ void FlaskList::removeFlask(int volume){
       delete auxNext;
       this->tail = aux;
       aux->next = nullptr;
-      std::cout << "Volume deletado." << std::endl;
       this->numberOfFlasks--;
     }
   }
@@ -68,15 +76,13 @@ void FlaskList::removeFlask(int volume){
 bool FlaskList::haveFlask(int volume){
   Flask *aux = this->head;
   int i;
-  bool exist = false;
   for(i=0; i<this->numberOfFlasks; i++){
     if(aux->volume == volume){
-      exist = true;
+      return true;
     }
     aux = aux->next;
   }
-  delete aux;
-  return exist;
+  return false;
 }
 
 void FlaskList::printList(){
@@ -99,49 +105,4 @@ Flask* FlaskList::getHead(){
 
 int FlaskList::getNumberOfFlasks(){
   return this->numberOfFlasks;
-}
-
-void FlaskList::flaskMeasurement(int volume){
-  if(volume == 0){
-    std::cout << volume << std::endl;
-    return;
-  }
-  FlaskList auxFlasks;
-  int i, j;
-  Flask *aux;
-  Flask *aux2;
-  aux = this->head;
-  for(i=0; i<this->numberOfFlasks; i++){
-    if(aux->volume == volume){
-      std::cout << aux->operations << std::endl;
-      return;
-    }
-    auxFlasks.insertFlask(aux->volume, aux->operations);
-    aux = aux->next;
-  }
-  while(true){
-    aux2 = this->head;
-    int amount = auxFlasks.getNumberOfFlasks();
-    for(i=0; i<this->numberOfFlasks; i++){
-      aux = auxFlasks.getHead();
-      for(j=0; j<amount; j++){
-        if(aux->volume + aux2->volume == volume){
-          std::cout << aux->operations + aux2->operations << std::endl;
-          auxFlasks.printList();
-          return;
-        }else if(!auxFlasks.haveFlask(aux->volume + aux2->volume)){
-          auxFlasks.insertFlask(aux->volume + aux2->volume, aux->operations + aux2->operations);
-        }
-        if(aux->volume - aux2->volume == volume){
-          std::cout << aux->operations+aux2->operations << std::endl;
-          auxFlasks.printList();
-          return;
-        }else if(aux->volume > aux2->volume && !auxFlasks.haveFlask(aux->volume - aux2->volume)){
-          auxFlasks.insertFlask(aux->volume - aux2->volume, aux->operations + aux2->operations);
-        }
-        aux = aux->next;
-      }
-      aux2 = aux2->next;
-    }
-  }
 }

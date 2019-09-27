@@ -21,7 +21,7 @@ class FlaskList{
     void removeFlask(int volume);
     bool haveFlask(int volume);
     void printList();
-    void flaskMeasurement(int volume);
+    void clearList();
     Flask* getHead();
     int getNumberOfFlasks();
 };
