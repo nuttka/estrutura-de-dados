@@ -16,8 +16,8 @@ FlaskList::~FlaskList(){
 }
 
 void FlaskList::clearList(){
-  delete this->head;
-  delete this->tail;
+  this->head = nullptr;
+  this->tail = nullptr;
   this->numberOfFlasks = 0;
 }
 

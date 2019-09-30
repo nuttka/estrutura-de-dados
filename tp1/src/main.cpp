@@ -21,12 +21,7 @@ void FlaskMeasurement(int volume, FlaskList &myFlasks, FlaskList &auxFlasks){
 
   while(true){
     aux2 = myFlasks.getHead();
-    if(aux->next == nullptr){
-      aux = auxFlasks.getHead();
-    }else{
-      aux = aux->next;
-    }
-    for(i=0; i<myFlasks.getNumberOfFlasks(); i++){
+    for(int i=0; i<myFlasks.getNumberOfFlasks(); i++){
       if(aux->volume + aux2->volume == volume){
         std::cout << aux->operations + aux2->operations << std::endl;
         return;
@@ -34,13 +29,14 @@ void FlaskMeasurement(int volume, FlaskList &myFlasks, FlaskList &auxFlasks){
         auxFlasks.insertFlask(aux->volume + aux2->volume, aux->operations + aux2->operations);
       }
       if(aux->volume - aux2->volume == volume){
-        std::cout << aux->operations+aux2->operations << std::endl;
+        std::cout << aux->operations + aux2->operations << std::endl;
         return;
       }else if(aux->volume > aux2->volume && !auxFlasks.haveFlask(aux->volume - aux2->volume)){
         auxFlasks.insertFlask(aux->volume - aux2->volume, aux->operations + aux2->operations);
       }
       aux2 = aux2->next;
     }
+    aux = aux->next;
   }
 }
 
@@ -49,6 +45,7 @@ void inputTreatment(FlaskList &myFlasks, FlaskList &auxFlasks){
   char function;
 
   while(std::cin >> volume >> function){
+
     if(function == 'i'){
       myFlasks.insertFlask(volume, 1);
     }else if(function == 'r'){
