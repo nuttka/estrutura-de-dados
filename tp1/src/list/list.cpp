@@ -7,15 +7,21 @@ FlaskList::FlaskList(){
 }
 
 FlaskList::~FlaskList(){
-  // Flask* currentFlask = this->head;
-  // while (currentFlask){
-  //   Flask* nextFlask = currentFlask->next;
-  //   delete currentFlask;
-  //   currentFlask = nextFlask;
-  // }
+  Flask* temp;
+  while(this->head != nullptr){
+    temp = this->head->next;
+    delete this->head;
+    this->head = temp;
+  }
 }
 
 void FlaskList::clearList(){
+  Flask* temp;
+  while(this->head != nullptr){
+    temp = this->head->next;
+    delete this->head;
+    this->head = temp;
+  }
   this->head = nullptr;
   this->tail = nullptr;
   this->numberOfFlasks = 0;
