@@ -20,7 +20,6 @@ class FlaskList{
     void insertFlask(int volume, int operations);
     void removeFlask(int volume);
     bool haveFlask(int volume);
-    void printList();
     void clearList();
     Flask* getHead();
     int getNumberOfFlasks();

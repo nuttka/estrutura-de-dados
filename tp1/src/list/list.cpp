@@ -82,27 +82,15 @@ void FlaskList::removeFlask(int volume){
 bool FlaskList::haveFlask(int volume){
   Flask *aux = this->head;
   int i;
+  bool exist = false;
   for(i=0; i<this->numberOfFlasks; i++){
     if(aux->volume == volume){
-      return true;
+      exist = true;
     }
     aux = aux->next;
   }
-  return false;
-}
-
-void FlaskList::printList(){
-  if(this->numberOfFlasks == 0){
-    std::cout << "Lista vazia." << std::endl;
-  }
-
-  Flask *aux = this->head;
-  int i;
-  for(i=0; i<this->numberOfFlasks; i++){
-    std::cout << "operations: " << aux->operations << " " << aux->volume << " ml" << std::endl;  
-    aux = aux->next;
-  }
   delete aux;
+  return exist;
 }
 
 Flask* FlaskList::getHead(){
