@@ -1,5 +1,30 @@
 #include "list.hpp"
 
+void partition();
+void quickSortRecur();
+void quickSort();
+void inputTreatment(PlanetList &myPlanets);
+
+
+// void partition(PlanetList &myPlanets){
+//   Planet* prev = nullptr;
+//   Planet* tail = pivot;
+
+//   while(cur != pivot){
+//     if(cur->namePlanet < pivot->namePlanet){
+
+//     }
+//   }
+// }
+
+// void quickSortRecur(){
+
+// }
+
+// void quickSort(){
+
+// }
+
 void inputTreatment(PlanetList &myPlanets){
   int timeForMounth;
   int numberOfPlanets;
@@ -23,6 +48,7 @@ void inputTreatment(PlanetList &myPlanets){
   std::cout << myPlanets.getTimeForMounth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
   myPlanets.printList();
 }
+
 
 int main(){
   PlanetList myPlanets;
