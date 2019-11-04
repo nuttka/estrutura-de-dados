@@ -11,6 +11,7 @@ void inputTreatment(PlanetList &myPlanets){
   std::cin >> timeForMonth >> numberOfPlanets >> sizeOfName;
 
   myPlanets.setTimeForMonth(timeForMonth);
+  myPlanets.setSizeOfName(sizeOfName);
 
   for(int i=0; i<numberOfPlanets; i++){
     int timeStay;
@@ -23,11 +24,15 @@ void inputTreatment(PlanetList &myPlanets){
     std::cin.ignore();
     fflush(stdin);
   }
+
   std::cout << std::endl;
-  myPlanets.timeQuicksort(0, numberOfPlanets-1);
+  // myPlanets.planetsForMonth(0, numberOfPlanets-1);
+  // myPlanets.namesForMonth(0, numberOfPlanets-1);
+  myPlanets.mergeSort(0, numberOfPlanets-1);
   myPlanets.organizeListForMonth();
   std::cout << myPlanets.getTimeForMonth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
   myPlanets.printList();
+  
 }
 
 

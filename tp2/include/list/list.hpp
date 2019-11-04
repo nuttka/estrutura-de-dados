@@ -16,6 +16,7 @@ class PlanetList{
     Planet planets[MaxTam];
     int numberOfPlanets;
     int timeForMonth;
+    int sizeOfName;
 
   public:
     PlanetList();
@@ -24,12 +25,14 @@ class PlanetList{
     void printList();
     void clearList();
     void changePlaces(Planet *i, Planet *j);
-    void timeQuicksort(int left, int right);
-    void nameQuicksort(int left, int right);
+    void merge(int left, int middle, int right);
+    void mergeSort(int left, int right);
+    // void planetsForMonth(int left, int right);
+    // void namesForMonth(int left, int right);
     void organizeListForMonth();
     int getNumberOfPlanets();
     int getTimeForMonth();
+    void setSizeOfName(int sizeOfName);
     void setTimeForMonth(int timeForMonth);
-    void setNumberOfPlanets(int numberOfPlanets);
 };
 #endif
