@@ -23,10 +23,11 @@ void inputTreatment(PlanetList &myPlanets){
     std::cin.ignore();
     fflush(stdin);
   }
-  // std::cout << std::endl;
-  // myPlanets.timeQuicksort(0, numberOfPlanets-1);
-  // std::cout << myPlanets.getTimeForMounth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
-  // myPlanets.printList();
+  std::cout << std::endl;
+  myPlanets.timeQuicksort(0, numberOfPlanets-1);
+  myPlanets.organizeListForMounth();
+  std::cout << myPlanets.getTimeForMounth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
+  myPlanets.printList();
 }
 
 

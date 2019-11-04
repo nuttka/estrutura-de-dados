@@ -28,7 +28,7 @@ void PlanetList::insertPlanet(int timeStay, std::string namePlanet){
 
 void PlanetList::printList(){
   for(int i=0; i<this->numberOfPlanets; i++){
-    std::cout << planets[i].namePlanet << " " << planets[i].timeStay << std::endl;
+    std::cout << planets[i].namePlanet << " " << planets[i].timeStay << " mes: " << planets[i].mounth << std::endl;
   }
 }
 
@@ -86,6 +86,19 @@ void PlanetList::timeQuicksort(int left, int right){
   }
   timeQuicksort(left, j);
   timeQuicksort(i, right);
+}
+
+void PlanetList::organizeListForMounth(){
+  int mounth = 1;
+  int maxMounth = 0;
+  for(int i=0; i<this->numberOfPlanets; i++){
+    maxMounth += this->planets[i].timeStay;
+    if(maxMounth > this->timeForMounth){
+      mounth++;
+      maxMounth = this->planets[i].timeStay;
+    }
+    this->planets[i].mounth = mounth;
+  }
 }
 
 int PlanetList::getNumberOfPlanets(){

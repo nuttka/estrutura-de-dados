@@ -25,6 +25,7 @@ class PlanetList{
     void clearList();
     void changePlaces(Planet *i, Planet *j);
     void timeQuicksort(int left, int right);
+    void organizeListForMounth();
     int getNumberOfPlanets();
     int getTimeForMounth();
     void setTimeForMounth(int timeForMounth);
