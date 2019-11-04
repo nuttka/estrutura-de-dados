@@ -23,6 +23,8 @@ class PlanetList{
     void insertPlanet(int timeStay, std::string namePlanet);
     void printList();
     void clearList();
+    void changePlaces(Planet *i, Planet *j);
+    void timeQuicksort(int left, int right);
     int getNumberOfPlanets();
     int getTimeForMounth();
     void setTimeForMounth(int timeForMounth);

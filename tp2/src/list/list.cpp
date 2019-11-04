@@ -32,6 +32,62 @@ void PlanetList::printList(){
   }
 }
 
+void PlanetList::changePlaces(Planet *i, Planet *j){
+  Planet aux = *i;
+  *i = *j;
+  *j = aux;
+}
+
+void PlanetList::timeQuicksort(int left, int right){
+  if(left>=right){
+    return;
+  }
+  int pivot;
+  int middle = (left+right)/2;
+
+  // pivot median of 3
+  if(this->planets[left].timeStay < this->planets[middle].timeStay){
+    if(this->planets[middle].timeStay < this->planets[right].timeStay){
+      pivot = planets[middle].timeStay;
+    }else{
+      if(this->planets[left].timeStay < this->planets[right].timeStay){
+        pivot = planets[right].timeStay;
+      }else{
+        pivot = planets[left].timeStay;
+      }
+    }
+  }else{
+    if(this->planets[right].timeStay < this->planets[middle].timeStay){
+      pivot = planets[middle].timeStay;
+    }else{
+      if(this->planets[right].timeStay < this->planets[left].timeStay){
+        pivot = planets[right].timeStay;
+      }else{
+        pivot = planets[left].timeStay;
+      }
+    }
+  }
+
+  int i = left, j = right;
+
+  // Partition
+  while(i <= j){
+    while(this->planets[i].timeStay < pivot){
+      i++;
+    }
+    while(this->planets[j].timeStay > pivot){
+      j--;
+    }
+    if(i <= j){
+      this->changePlaces(&this->planets[i], &this->planets[j]);
+      i++;
+      j--;
+    }
+  }
+  timeQuicksort(left, j);
+  timeQuicksort(i, right);
+}
+
 int PlanetList::getNumberOfPlanets(){
   return this->numberOfPlanets;
 }
