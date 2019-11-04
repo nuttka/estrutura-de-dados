@@ -4,13 +4,13 @@ void inputTreatment(PlanetList &myPlanets);
 
 
 void inputTreatment(PlanetList &myPlanets){
-  int timeForMounth;
+  int timeForMonth;
   int numberOfPlanets;
   int sizeOfName;
 
-  std::cin >> timeForMounth >> numberOfPlanets >> sizeOfName;
+  std::cin >> timeForMonth >> numberOfPlanets >> sizeOfName;
 
-  myPlanets.setTimeForMounth(timeForMounth);
+  myPlanets.setTimeForMonth(timeForMonth);
 
   for(int i=0; i<numberOfPlanets; i++){
     int timeStay;
@@ -25,8 +25,8 @@ void inputTreatment(PlanetList &myPlanets){
   }
   std::cout << std::endl;
   myPlanets.timeQuicksort(0, numberOfPlanets-1);
-  myPlanets.organizeListForMounth();
-  std::cout << myPlanets.getTimeForMounth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
+  myPlanets.organizeListForMonth();
+  std::cout << myPlanets.getTimeForMonth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
   myPlanets.printList();
 }
 

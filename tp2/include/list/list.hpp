@@ -6,7 +6,7 @@
 #define LIST_H
 
 struct Planet{
-  int mounth;
+  int month;
   int timeStay;
   std::string namePlanet;
 };
@@ -15,7 +15,7 @@ class PlanetList{
   private:
     Planet planets[MaxTam];
     int numberOfPlanets;
-    int timeForMounth;
+    int timeForMonth;
 
   public:
     PlanetList();
@@ -25,10 +25,11 @@ class PlanetList{
     void clearList();
     void changePlaces(Planet *i, Planet *j);
     void timeQuicksort(int left, int right);
-    void organizeListForMounth();
+    void nameQuicksort(int left, int right);
+    void organizeListForMonth();
     int getNumberOfPlanets();
-    int getTimeForMounth();
-    void setTimeForMounth(int timeForMounth);
+    int getTimeForMonth();
+    void setTimeForMonth(int timeForMonth);
     void setNumberOfPlanets(int numberOfPlanets);
 };
 #endif

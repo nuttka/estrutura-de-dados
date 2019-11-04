@@ -9,7 +9,7 @@ PlanetList::~PlanetList(){
 
 void PlanetList::clearList(){
   for(int i=0; i<this->numberOfPlanets; i++){
-    this->planets[i].mounth = 0;
+    this->planets[i].month = 0;
     this->planets[i].namePlanet = "";
     this->planets[i].timeStay = 0;
   }
@@ -28,7 +28,7 @@ void PlanetList::insertPlanet(int timeStay, std::string namePlanet){
 
 void PlanetList::printList(){
   for(int i=0; i<this->numberOfPlanets; i++){
-    std::cout << planets[i].namePlanet << " " << planets[i].timeStay << " mes: " << planets[i].mounth << std::endl;
+    std::cout << planets[i].namePlanet << " " << planets[i].timeStay << " mes: " << planets[i].month << std::endl;
   }
 }
 
@@ -88,16 +88,16 @@ void PlanetList::timeQuicksort(int left, int right){
   timeQuicksort(i, right);
 }
 
-void PlanetList::organizeListForMounth(){
-  int mounth = 1;
-  int maxMounth = 0;
+void PlanetList::organizeListForMonth(){
+  int month = 1;
+  int maxMonth = 0;
   for(int i=0; i<this->numberOfPlanets; i++){
-    maxMounth += this->planets[i].timeStay;
-    if(maxMounth > this->timeForMounth){
-      mounth++;
-      maxMounth = this->planets[i].timeStay;
+    maxMonth += this->planets[i].timeStay;
+    if(maxMonth > this->timeForMonth){
+      month++;
+      maxMonth = this->planets[i].timeStay;
     }
-    this->planets[i].mounth = mounth;
+    this->planets[i].month = month;
   }
 }
 
@@ -105,14 +105,14 @@ int PlanetList::getNumberOfPlanets(){
   return this->numberOfPlanets;
 }
 
-int PlanetList::getTimeForMounth(){
-  return this->timeForMounth;
+int PlanetList::getTimeForMonth(){
+  return this->timeForMonth;
 }
 
 void PlanetList::setNumberOfPlanets(int numberOfPlanets){
   this->numberOfPlanets = numberOfPlanets;
 }
 
-void PlanetList::setTimeForMounth(int timeForMounth){
-  this->timeForMounth = timeForMounth;
+void PlanetList::setTimeForMonth(int timeForMonth){
+  this->timeForMonth = timeForMonth;
 }
