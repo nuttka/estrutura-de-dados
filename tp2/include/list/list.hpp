@@ -21,15 +21,15 @@ class PlanetList{
   public:
     PlanetList();
     ~PlanetList();
+
     void insertPlanet(int timeStay, std::string namePlanet);
     void printList();
-    void clearList();
-    void changePlaces(Planet *i, Planet *j);
+    void organizeListForMonth();
     void merge(int left, int middle, int right);
     void mergeSort(int left, int right);
-    // void planetsForMonth(int left, int right);
-    // void namesForMonth(int left, int right);
-    void organizeListForMonth();
+    void quicksortB();
+    void CountingSort(size_t sizeString);
+
     int getNumberOfPlanets();
     int getTimeForMonth();
     void setSizeOfName(int sizeOfName);

@@ -24,12 +24,10 @@ void inputTreatment(PlanetList &myPlanets){
     std::cin.ignore();
     fflush(stdin);
   }
-
   std::cout << std::endl;
-  // myPlanets.planetsForMonth(0, numberOfPlanets-1);
-  // myPlanets.namesForMonth(0, numberOfPlanets-1);
   myPlanets.mergeSort(0, numberOfPlanets-1);
   myPlanets.organizeListForMonth();
+  myPlanets.quicksortB();
   std::cout << myPlanets.getTimeForMonth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
   myPlanets.printList();
   
