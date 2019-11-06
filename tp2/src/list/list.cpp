@@ -103,7 +103,7 @@ void PlanetList::CountingSort(size_t sizeString){
   }
 
   for (int j=0; j<this->numberOfPlanets; j++){   
-    c[sizeString<this->planets[j].namePlanet.size() ? (int)(unsigned char)this->planets[j].namePlanet[sizeString] + 1 : 0]++;
+    c[(int)(unsigned char)this->planets[j].namePlanet[sizeString] + 1]++;
   }
 
   for (int f=1; f<257; f++){
@@ -111,8 +111,8 @@ void PlanetList::CountingSort(size_t sizeString){
   }
 
   for (int r=this->numberOfPlanets-1; r>=0; r--){
-    b[c[sizeString<this->planets[r].namePlanet.size() ? (int)(unsigned char)this->planets[r].namePlanet[sizeString] + 1 : 0] - 1] = this->planets[r];
-    c[sizeString<this->planets[r].namePlanet.size() ? (int)(unsigned char)this->planets[r].namePlanet[sizeString] + 1 : 0]--;
+    b[c[(int)(unsigned char)this->planets[r].namePlanet[sizeString] + 1] - 1] = this->planets[r];
+    c[(int)(unsigned char)this->planets[r].namePlanet[sizeString] + 1]--;
   }
 
   for (int l=0; l<this->numberOfPlanets; l++){
