@@ -20,7 +20,6 @@ class PlanetList{
 
   public:
     PlanetList();
-    ~PlanetList();
 
     void insertPlanet(int timeStay, std::string namePlanet);
     void printList();
@@ -29,7 +28,6 @@ class PlanetList{
     void mergeSort(int left, int right);
     void quicksortB(int start, int end);
     void CountingSort(int start, int end, int planets, size_t sizeString);
-    // void CountingSort(size_t sizeString);
 
     int getNumberOfPlanets();
     int getTimeForMonth();

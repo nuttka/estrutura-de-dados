@@ -37,7 +37,7 @@ void inputTreatment(PlanetList &myPlanets){
     int end = limits[1];
     myPlanets.quicksortB(start, end);
   }
-  
+
   myPlanets.printList();
 }
 
