@@ -27,10 +27,18 @@ void inputTreatment(PlanetList &myPlanets){
   std::cout << std::endl;
   myPlanets.mergeSort(0, numberOfPlanets-1);
   myPlanets.organizeListForMonth();
-  myPlanets.quicksortB();
-  std::cout << myPlanets.getTimeForMonth() << " " << myPlanets.getNumberOfPlanets() << std::endl;
-  myPlanets.printList();
+
+  int maxMonth = myPlanets.getMaxMonth();
+
+  for(int i=1; i<=maxMonth; i++){
+    int limits[2];
+    myPlanets.getLimits(limits, i);
+    int start = limits[0];
+    int end = limits[1];
+    myPlanets.quicksortB(start, end);
+  }
   
+  myPlanets.printList();
 }
 
 

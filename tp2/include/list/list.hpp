@@ -27,11 +27,14 @@ class PlanetList{
     void organizeListForMonth();
     void merge(int left, int middle, int right);
     void mergeSort(int left, int right);
-    void quicksortB();
-    void CountingSort(size_t sizeString);
+    void quicksortB(int start, int end);
+    void CountingSort(int start, int end, int planets, size_t sizeString);
+    // void CountingSort(size_t sizeString);
 
     int getNumberOfPlanets();
     int getTimeForMonth();
+    int getMaxMonth();
+    void getLimits(int limits[], int i);
     void setSizeOfName(int sizeOfName);
     void setTimeForMonth(int timeForMonth);
 };
